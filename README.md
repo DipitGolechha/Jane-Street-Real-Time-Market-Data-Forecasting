@@ -25,8 +25,6 @@ Dataset link:
 - **Dipit Golechha**  
 - **Devesh Shah**
 
-Both collaborated on feature engineering, model development, and hyperparameter tuning.
-
 ---
 
 ## Project Highlights
@@ -49,6 +47,8 @@ The following models were explored and benchmarked:
 6. **CatBoost**
 7. **Long Short-Term Memory (LSTM)**
 8. **XGBoost Regressor (Ensemble Version)**
+9. **AutoEncoder**
+10. **Ensemble version of these models**
 
 Each model was designed to capture different aspects of time-dependence, feature correlation, and temporal drift in the dataset.
 
@@ -65,3 +65,37 @@ Each model was designed to capture different aspects of time-dependence, feature
 - Tree-based models (LightGBM and XGBoost) achieved superior performance on structured tabular features.  
 - Recurrent architectures (LSTM) better captured temporal dependencies, though sensitive to noise.
 - While linear regression with selected features, online learning and lagged features achieved the best results, suggesting us that sometimes understanding the data is more important than understanding complex models.
+
+---
+
+## Dataset Description
+The competition dataset comprises a set of timeseries with 79 features and 9 responders, anonymized but representing real market data. The goal of the competition is to forecast one of these responders, i.e., responder_6, for up to six months in the future.
+
+For more information: https://www.kaggle.com/competitions/jane-street-real-time-market-data-forecasting/data
+---
+
+## Modeling Workflow
+1. **Data Preprocessing**  
+   - Handling missing values  
+   - Feature normalization  
+   - Weight and resp scaling  
+
+2. **Feature Engineering**  
+   - Lagged features and rolling window statistics  
+   - Online update of weights  
+   - Construction of meta-features for time-based trends  
+
+3. **Model Training & Validation**  
+   - K-fold cross-validation with temporal splits  
+   - Early stopping based on validation metrics  
+   - Hyperparameter tuning for gradient boosting methods  
+
+4. **Evaluation Metrics**  
+   - **Utility Score (competition metric)**  
+     - Balances profitability and risk  
+   - **Mean Squared Error (MSE)**
+   - **Root Mean Squared Error (RMSE)**
+   - **Cross validation score**
+  
+
+---
